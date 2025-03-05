@@ -149,7 +149,7 @@
                     <li class="user-header text-bg-primary">
                         <img src="{{ Vite::asset('resources/img/user2-160x160.jpg ') }}" class="rounded-circle shadow" alt="User Image" />
                         <p>
-                            {{ auth()->user()->name ?? 'N/D'}}
+                            {{ auth()->user()->name ?? 'N/D' }}
                             <small>Member since Nov. 2023</small>
                         </p>
                     </li>
@@ -167,8 +167,12 @@
                     <!--end::Menu Body-->
                     <!--begin::Menu Footer-->
                     <li class="user-footer">
+
+                        <form action="{{ route('logout') }}" method="post">
+                            @csrf
+                            <button type="submit" class="btn btn-default btn-flat float-end">Sign out</button>
+                        </form>
                         <a href="#" class="btn btn-default btn-flat">Profile</a>
-                        <a href="#" class="btn btn-default btn-flat float-end">Sign out</a>
                     </li>
                     <!--end::Menu Footer-->
                 </ul>
