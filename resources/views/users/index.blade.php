@@ -13,6 +13,8 @@
         </div>
     @endif
 
+
+
     <form action="{{ route('users.index') }}" class="mb-3" method="GET" style="width: 400px">
         <div class="input-group input-group-sm">
             <input type="text" name="keyword" class="form-control" placeholder="Pesquisa por nome ou email" value="{{ request()?->keyword }}">
@@ -39,12 +41,17 @@
                     <td>{{ $user->email }}</td>
                     <td>
                         <div class="d-flex gap-2">
-                            <a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary btn-sm">Editar</a>
-                            <form action="{{ route('users.destroy', $user->id) }}" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
-                            </form>
+                            @can('edit', \App\Models\User::class)
+                                <a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary btn-sm">Editar</a>
+                            @endcan
+                            @can('destroy', \App\Models\User::class)
+                                <form action="{{ route('users.destroy', $user->id) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
+                                </form>
+                            @endcan
+
                         </div>
                     </td>
                 </tr>
