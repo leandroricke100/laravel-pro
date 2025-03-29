@@ -22,7 +22,7 @@
                 <li class="nav-item">
                     <a href="{{ route('users.index') }}" class="nav-link">
                         <i class="nav-icon bi bi-download"></i>
-                        <p>Installation</p>
+                        <p>Usuários</p>
                     </a>
                 </li>
 
